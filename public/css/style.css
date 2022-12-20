@@ -1,0 +1,26 @@
+body {
+  background-color: #333;
+  color: #fff;
+}
+div {
+  padding: 10px;
+  background-color: #222;
+  width: 500px;
+  margin: 20px auto;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Helvetica Neue', sans-serif;
+  font-size: 14px; 
+  font-weight: 600;
+  line-height: 1.5;
+  color: rgb(133, 133, 133); 
+}
+.superscript {
+  font-size: 8px;
+  margin: 0;
+}
+img {
+  margin: 10px 0; /* this adds space between the images */
+}

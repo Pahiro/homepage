@@ -1,0 +1,38 @@
+{
+  "name": "homepage",
+  "version": "1.0.0",
+<<<<<<< HEAD
+  "description": "Server Homepage",
+=======
+  "description": "",
+>>>>>>> 0636cf97fa2db7ddd3f92cc90539c4287f7134a5
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bennetvdg/homepage.git"
+  },
+<<<<<<< HEAD
+  "author": "Bennet",
+=======
+  "author": "",
+>>>>>>> 0636cf97fa2db7ddd3f92cc90539c4287f7134a5
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bennetvdg/homepage/issues"
+  },
+<<<<<<< HEAD
+  "homepage": "https://github.com/bennetvdg/homepage#readme",
+  "dependencies": {
+    "anilist-node": "^1.13.1",
+    "axios": "^1.2.1",
+    "ejs": "^3.1.8",
+    "express": "^4.18.2",
+    "mariadb": "^3.0.2"
+  }
+=======
+  "homepage": "https://github.com/tertiusvdg/myExpressApp#readme"
+>>>>>>> 0636cf97fa2db7ddd3f92cc90539c4287f7134a5
+}

@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <title>Pahiro</title>
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+    </head>
+    <body>
+        <div>
+            <a href="https://anilist.co/user/Pahiro/">
+                <img src="https://anilist.co/img/icons/icon.svg" style="width: 50px;"></img>
+            </a>
+            <% for (var i = 0; i < 1 ; i++) { %>
+                <img src="<%= latestAnime[i]['image'] %>" style="width: 300px;"></img>
+                <p class=superscript><%= latestAnime[i]['activity'] %> <%= latestAnime[i]['progress'] %></p>
+                <%= latestAnime[i]['title'] %>
+            <% } %>
+        </div>
+        <div>
+            <a href="https://trakt.tv/users/pahiro">
+                <img src="logos/trakt.webp" style="width: 50px;"></img>
+            </a>
+            <a target="_blank" href="https://trakt.tv/users/pahiro"><img width="300" height="490" alt="Pahiro" src="https://widgets.trakt.tv/users/5a59bc527b2b84aa142490165dc85b11/watched/poster@2x.jpg" /></a>
+        </div>
+        <div>
+            <a href="https://steamcommunity.com/id/pahira/">
+                <img src="logos/steam.png" style="width: 50px;"></img>
+            </a>
+            <% for (var i = 0; i < 1; i++) { %>
+                <img src="https://cdn.cloudflare.steamstatic.com/steam/apps/<%= gameHistory[i]['appid'] %>//hero_capsule.jpg"  style="width: 300px;"></img>
+                <p class=superscript>last played</p>
+                <%= gameHistory[i]['name'] %>
+            <% } %>
+        </div>
+        <div>
+            <img src="logos/ytmusic.png" style="width: 50px;"></img>
+        </div>
+    </body>
+</html>
