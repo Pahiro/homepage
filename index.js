@@ -6,6 +6,7 @@ const app = express();
 require('dotenv').config();
 
 const path = require('path');
+const { exit } = require('process');
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
@@ -41,10 +42,9 @@ app.listen(3000, function() {
 
 //Anilist
 const getLatestAnime = async () => {
-  const anilistId = process.env.anilistId;
   var latestAnime = [];
   const Anilist = new anilist();
-  await Anilist.user.getRecentActivity(anilistId).then(async activities => {
+  await Anilist.user.getRecentActivity(5655956).then(activities => {
     
     //Remove all activities that are not "watched episode"
     for( var i = 0; i < activities.length; i++){          
@@ -56,7 +56,7 @@ const getLatestAnime = async () => {
     console.log(activities);
 
     for(var i = 0; i < 1; i++ ) {
-      await Anilist.media.anime(activities[i].media.id).then(anime => {
+      Anilist.media.anime(activities[i].media.id).then(anime => {
         if (anime != undefined) {
           if (anime.coverImage != undefined && activities[i].status == 'watched episode'){
             var item = [];
@@ -82,9 +82,7 @@ const getGameHistory = async () => {
   const response = await axios.get(endpoint);
   return response.data.response.games;
 }
-=======
 
 app.get('/', (req, res) => {
     res.send('Hello World!');
 });
-
