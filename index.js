@@ -2,7 +2,7 @@ const anilist = require('anilist-node');
 const axios = require('axios');
 const express = require('express');
 const app = express();
-<<<<<<< HEAD
+
 require('dotenv').config();
 
 const path = require('path');
@@ -87,4 +87,4 @@ const getGameHistory = async () => {
 app.get('/', (req, res) => {
     res.send('Hello World!');
 });
->>>>>>> 0636cf97fa2db7ddd3f92cc90539c4287f7134a5
+
