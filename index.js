@@ -2,14 +2,17 @@ const anilist = require('anilist-node');
 const axios = require('axios');
 const express = require('express');
 const app = express();
+const { google } = require('googleapis');
+const fs = require('fs');
+const dotenv = require('dotenv');
 
-require('dotenv').config();
+dotenv.config();
 
 const path = require('path');
 const { exit } = require('process');
+
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
-
 app.use(express.static('public'))
 
 app.get("/", async (req, res) => {  
@@ -84,5 +87,48 @@ const getGameHistory = async () => {
 }
 
 app.get('/', (req, res) => {
-    res.send('Hello World!');
+  res.send('Hello World!');
+});
+
+app.get('/google', async (req, res)  => {
+  
+  const oauth2Client = new google.auth.OAuth2({
+    clientId: process.env.googleClientId,
+    clientSecret: process.env.googleClientSecret,
+    redirectUri: "http://localhost:3000/google"
+  });
+  const scopes = [
+    'https://www.googleapis.com/auth/youtube.readonly'
+  ];
+
+  tokens = fs.readFileSync('tokens.json', 'utf8');
+  if (process.env.googleCode == '') {
+    process.env.googleCode = req.query['code'];
+  }
+
+  if ( process.env.googleCode == '' ) {
+    const url = oauth2Client.generateAuthUrl({
+      access_type: 'offline',
+      scope: scopes
+    });
+    res.redirect(url);
+  } else if ( tokens == '' ) {
+    const {tokens} = await oauth2Client.getToken(process.env.googleCode).catch(err => { console.log(err); });
+    console.log(tokens);
+    fs.writeFileSync('tokens.json', tokens, 'utf8');
+  } else if ( tokens != '' ) {
+    oauth2Client.setCredentials(tokens);
+    const youtube = google.youtube({
+      version: 'v3',
+      auth: oauth2Client
+    });
+    const requestParams = {
+      part: 'snippet,contentDetails',
+      maxResults: 25,
+      mine: true,    
+      type: 'video'
+    };
+    const response = youtube.activities.list(requestParams);
+    console.log(response.data);
+  }
 });
